@@ -41,7 +41,6 @@ Por ser uma aplicação *serverless* (sem servidor), você não precisa instalar
 1.  Faça o clone ou baixe o arquivo ZIP deste repositório:
     ```bash
     git clone [https://github.com/Maike-Simoncini/SalveDados.git](https://github.com/Maike-Simoncini/SalveDados.git)
-```
 
  2. Navegue até a pasta do projeto e abra o arquivo **index.html** diretamente no seu navegador padrão (dando um duplo clique sobre ele).
 
