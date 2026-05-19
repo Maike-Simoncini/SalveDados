@@ -69,7 +69,8 @@
                     </div>
                     
                     <div class="sm:col-span-2 mt-2">
-                        <button type="submit" class="w-full sm:w-auto float-right bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/10">
+                        <!-- Botão Adicionar Atualizado com o degradê do Título -->
+                        <button type="submit" class="w-full sm:w-auto float-right bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-slate-950 font-bold py-2.5 px-6 rounded-lg transition-all shadow-lg shadow-blue-500/10">
                             Adicionar à Lista
                         </button>
                     </div>
@@ -84,8 +85,8 @@
                         Registros Salvos
                     </h2>
                     
-                    <!-- Botão de Exportar .txt -->
-                    <button id="btnDownloadTxt" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-md">
+                    <!-- Botão de Exportar .txt Atualizado com o degradê do Título -->
+                    <button id="btnDownloadTxt" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-slate-950 font-bold py-2 px-4 rounded-lg transition-all shadow-md">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                         Salvar Arquivo .txt
                     </button>
@@ -116,14 +117,12 @@
     <script>
         const CHAVE_STORAGE = 'salve_dados_app';
 
-        // Carrega os dados iniciais do LocalStorage ou inicia um array vazio
         let bancoDados = JSON.parse(localStorage.getItem(CHAVE_STORAGE)) || [];
 
         const form = document.getElementById('formCadastro');
         const tabelaCorpo = document.getElementById('tabelaCorpo');
         const btnTxt = document.getElementById('btnDownloadTxt');
 
-        // Função para mostrar a mensagem Toast de sucesso elegante
         function mostrarMensagemSucesso() {
             const toast = document.createElement('div');
             
@@ -155,7 +154,6 @@
             }, 3000);
         }
 
-        // Função para renderizar as linhas da tabela
         function renderizarTabela() {
             tabelaCorpo.innerHTML = '';
 
@@ -194,7 +192,6 @@
             });
         }
 
-        // Evento de Submissão do Formulário
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -214,7 +211,6 @@
             renderizarTabela();
         });
 
-        // Função global para excluir registros individuais
         window.excluirRegistro = function(index) {
             if (confirm(`Tem certeza que deseja excluir o registro de ${bancoDados[index].nome}?`)) {
                 bancoDados.splice(index, 1);
@@ -223,7 +219,6 @@
             }
         }
 
-        // Geração e Download do Arquivo .txt com aviso Toast (Corrigido com Template Strings)
         btnTxt.addEventListener('click', () => {
             if (bancoDados.length === 0) {
                 alert('Não há dados cadastrados para exportar.');
@@ -263,11 +258,9 @@
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
 
-            // Dispara a mensagem de feedback na tela
             mostrarMensagemSucesso();
         });
 
-        // Execução inicial ao abrir a página
         renderizarTabela();
     </script>
 </body>
