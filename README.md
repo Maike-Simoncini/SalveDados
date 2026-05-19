@@ -1,36 +1,52 @@
-# Salve Dados 💾
+# 💾 Salve Dados
 
-O **Salve Dados** é um gerenciador pessoal de informações e documentos, desenvolvido para ser simples, rápido e seguro. Com uma interface moderna em *Dark Mode*, ele facilita o armazenamento de dados que você precisa ter sempre à mão.
+O **Salve Dados** é um gerenciador de informações pessoais leve, rápido e totalmente focado em privacidade. O aplicativo roda de forma 100% independente no navegador (front-end estático) e não depende de servidores externos ou bancos de dados pesados, utilizando recursos nativos da web para guardar e exportar suas informações de maneira segura.
+
+---
+
+## ✨ Funcionalidades
+
+*   **Cadastro de Registros:** Formulário completo para salvar Nome, E-mail, CPF, RG, Telefone e Chave Pix.
+*   **Persistência Offline:** Os dados permanecem guardados mesmo se você fechar o navegador ou reiniciar o computador, utilizando o `LocalStorage`.
+*   **Visualização e Controle:** Tabela dinâmica e responsiva que lista os registros com a opção de excluir itens individualmente.
+*   **Backup em .txt:** Um botão dedicado que processa todos os dados salvos e gera um arquivo de texto limpo e organizado direto para a sua pasta de downloads.
+*   **Feedback Inteligente (Toast):** Sistema de notificação fluida no canto da tela que confirma visualmente quando o arquivo foi baixado com sucesso.
+*   **Design Dark Mode:** Interface escura moderna e confortável aos olhos estruturada com Tailwind CSS.
 
 ---
 
-## ✨ Por que usar o Salve Dados?
+## 🛠️ Tecnologias Utilizadas
 
-* **Simplicidade:** Interface limpa e direta ao ponto.
-* **Privacidade Local:** Nenhum dado é enviado para servidores. Tudo fica guardado apenas no seu navegador (LocalStorage).
-* **Agilidade:** Copie todos os dados de um registro em um segundo para colar onde precisar.
-* **Design Moderno:** Desenvolvido com **Tailwind CSS**, oferecendo uma experiência visual agradável com tons de azul e cinza escuro.
+O projeto preza pela simplicidade e portabilidade, utilizando apenas a tríade padrão da web moderna sem necessidade de build (`npm install`):
 
-## 🛠️ O que há por baixo do capô?
-
-* **HTML5 & JavaScript Vanilla:** Sem frameworks pesados, garantindo carregamento instantâneo.
-* **Tailwind CSS:** Para um layout responsivo que funciona em qualquer tela.
-* **LocalStorage API:** Para persistência de dados sem necessidade de banco de dados externo.
-
-## 📋 Campos Disponíveis
-
-Ao cadastrar, você pode organizar:
-- ✅ Nome Completo
-- ✅ E-mail
-- ✅ CPF e RG
-- ✅ Telefone
-- ✅ Chave Pix
-
-## 🚀 Como começar
-
-1. Clone este repositório ou baixe o arquivo `index.html`.
-2. Abra o arquivo no seu navegador.
-3. Adicione seu primeiro registro!
+*   **HTML5:** Estruturação semântica da aplicação.
+*   **Tailwind CSS:** Estilização responsiva via CDN utilizando o ecossistema utilitário nativo.
+*   **JavaScript (ES6+):** Manipulação dinâmica do DOM, consumo da API do `LocalStorage` e geração física de arquivos usando `Blob`.
 
 ---
-Desenvolvido para facilitar a organização do dia a dia. 📝
+
+## ⚙️ Como o Backup .txt Funciona
+
+1.  **Leitura do Banco Local:** Ao clicar em "Salvar Arquivo .txt", o JavaScript lê a string JSON armazenada na chave do navegador.
+2.  **Formatação Estruturada:** O script varre o array de objetos e reconstrói as linhas usando caracteres especiais de separação (ex: `====================`), gerando um relatório altamente legível.
+3.  **Injeção de Download (Blob API):** Um arquivo temporário invisível é injetado no DOM e o navegador dispara o gatilho de download nativo, nomeando o arquivo com a data atual (ex: `Backup_SalveDados_2026-05-19.txt`).
+4.  **Feedback:** O elemento de memória é limpo instantaneamente e a notificação flutuante é disparada para o usuário.
+
+---
+
+## 🚀 Como Executar o Projeto
+
+Por ser uma aplicação *serverless* (sem servidor), você não precisa instalar nenhuma dependência!
+
+1.  Faça o clone ou baixe o arquivo ZIP deste repositório:
+    ```bash
+    git clone [https://github.com/Maike-Simoncini/SalveDados.git](https://github.com/Maike-Simoncini/SalveDados.git)
+    
+
+```
+ 2. Navegue até a pasta do projeto e abra o arquivo **index.html** diretamente no seu navegador padrão (dando um duplo clique sobre ele).
+ 3. Pronto! O sistema funcionará imediatamente.
+## 📄 Licença
+Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para obter mais detalhes.
+```
+
