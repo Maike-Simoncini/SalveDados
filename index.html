@@ -3,215 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salve Dados</title>
+    <title>Salve Dados - Backup Local</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #121212;
-            color: #E0E0E0;
-        }
-        .container-card {
-            background-color: #1F1F1F;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-        input {
-            transition: all 0.3s ease;
-            background-color: #2D2D2D !important;
-            border: 1px solid #444 !important;
-            color: #E0E0E0 !important;
-        }
-        input:focus {
-            border-color: #3b82f6 !important;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5) !important;
-            outline: none;
-        }
+        /* Barra de rolagem customizada */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
     </style>
 </head>
-<body class="min-h-screen p-4 sm:p-8 flex flex-col items-center bg-gray-900">
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans antialiased">
 
-    <div class="w-full max-w-4xl rounded-xl container-card p-6 sm:p-10">
-        <h1 class="text-3xl font-bold text-blue-400 mb-6 border-b border-gray-700 pb-3 flex items-center gap-2">
-            Salve Dados <span class="text-2xl">🔐</span>
-        </h1>
+    <div class="max-w-5xl mx-auto px-4 py-8">
         
-        <form id="familyForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="md:col-span-2">
-                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nome Completo</label>
-                <input type="text" id="name" required class="w-full p-3 rounded-lg" placeholder="Ex: Maria da Silva">
-            </div>
+        <!-- Cabeçalho -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold tracking-tight bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                Salve Dados
+            </h1>
+            <p class="text-slate-400 mt-2 text-sm sm:text-base">
+                Gerencie seus dados locais de forma segura e exporte em formato de texto limpo.
+            </p>
+        </header>
 
-            <div class="md:col-span-2">
-                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">E-mail</label>
-                <input type="email" id="email" class="w-full p-3 rounded-lg" placeholder="exemplo@email.com">
-            </div>
+        <main class="grid grid-cols-1 gap-8">
+            
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <section class="bg-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-xl">
+                <h2 class="text-xl font-bold text-blue-400 mb-6 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                    Novo Registro
+                </h2>
+                
+                <form id="formCadastro" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Nome Completo</label>
+                        <input type="text" id="nome" required class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors" placeholder="João Silva">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">E-mail</label>
+                        <input type="email" id="email" required class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors" placeholder="joao@email.com">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">CPF</label>
+                        <input type="text" id="cpf" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors" placeholder="000.000.000-00">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">RG</label>
+                        <input type="text" id="rg" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors" placeholder="00.000.000-0">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Telefone</label>
+                        <input type="tel" id="telefone" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors" placeholder="(11) 99999-9999">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Chave Pix</label>
+                        <input type="text" id="pix" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors" placeholder="E-mail, CPF, Telefone ou Aleatória">
+                    </div>
+                    
+                    <div class="sm:col-span-2 mt-2">
+                        <button type="submit" class="w-full sm:w-auto float-right bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg transition-colors shadow-lg shadow-blue-600/10">
+                            Adicionar à Lista
+                        </button>
+                    </div>
+                </form>
+            </section>
 
-            <div>
-                <label for="cpf" class="block text-sm font-medium text-gray-300 mb-1">CPF</label>
-                <input type="tel" id="cpf" required class="w-full p-3 rounded-lg" placeholder="Ex: 123.456.789-00">
-            </div>
-
-            <div>
-                <label for="rg" class="block text-sm font-medium text-gray-300 mb-1">RG</label>
-                <input type="text" id="rg" class="w-full p-3 rounded-lg" placeholder="Ex: MG-12.345.678">
-            </div>
-
-            <div>
-                <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Telefone</label>
-                <input type="tel" id="phone" class="w-full p-3 rounded-lg" placeholder="Ex: (35) 98765-4321">
-            </div>
-
-            <div>
-                <label for="pixKey" class="block text-sm font-medium text-gray-300 mb-1">Chave Pix</label>
-                <input type="text" id="pixKey" class="w-full p-3 rounded-lg" placeholder="Ex: CPF, email, telefone...">
-            </div>
-
-            <div class="md:col-span-2 flex space-x-4">
-                <button type="submit" id="submitButton" class="flex-grow py-3 px-4 bg-indigo-700 hover:bg-indigo-600 text-white font-semibold rounded-lg shadow-2xl shadow-indigo-400/70 transition duration-300 transform hover:scale-[1.01]">
-                    <span id="buttonText">Salvar Registro</span>
-                </button>
-                <div id="cancelButtonContainer" class="hidden flex-shrink-0">
-                    <button type="button" id="cancelEditButton" class="py-3 px-4 bg-gray-700 hover:bg-gray-600 text-gray-300 font-semibold rounded-lg transition duration-200">
-                        Cancelar
+            <!-- TABELA E EXPORTAÇÃO -->
+            <section class="bg-slate-800 border border-slate-700/50 rounded-2xl p-6 shadow-xl">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                    <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                        Registros Salvos
+                    </h2>
+                    
+                    <!-- Botão de Exportar .txt -->
+                    <button id="btnDownloadTxt" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow-md">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Salvar Arquivo .txt
                     </button>
                 </div>
-            </div>
-        </form>
 
-        <div id="statusMessage" class="mt-4 p-3 hidden rounded-lg text-sm font-medium" role="alert"></div>
-        
-        <h2 class="text-2xl font-bold text-gray-100 mt-10 mb-4 border-b border-gray-700 pb-2">Lista Salvos</h2>
-        <div id="recordsList" class="space-y-4">
-            <p id="loadingRecords" class="text-gray-400 italic">Carregando dados...</p>
-        </div>
+                <!-- Tabela Responsiva -->
+                <div class="overflow-x-auto w-full rounded-xl border border-slate-700/60">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-700/40 text-slate-300 text-xs uppercase tracking-wider border-b border-slate-700">
+                                <th class="py-3 px-4">Nome</th>
+                                <th class="py-3 px-4">E-mail</th>
+                                <th class="py-3 px-4">CPF / RG</th>
+                                <th class="py-3 px-4">Contato / Pix</th>
+                                <th class="py-3 px-4 text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaCorpo" class="divide-y divide-slate-700/50 text-sm text-slate-300">
+                            <!-- Inserido dinamicamente via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
     </div>
 
+    <!-- LOGICA JAVASCRIPT -->
     <script>
-        const STORAGE_KEY = 'docsafe_records_list';
-        const form = document.getElementById('familyForm');
-        const submitButton = document.getElementById('submitButton');
-        const buttonText = document.getElementById('buttonText');
-        const statusMessage = document.getElementById('statusMessage');
-        const recordsList = document.getElementById('recordsList');
-        const loadingRecords = document.getElementById('loadingRecords');
-        const cancelButtonContainer = document.getElementById('cancelButtonContainer');
-        const cancelEditButton = document.getElementById('cancelEditButton');
-        
-        let editRecordId = null; 
+        const CHAVE_STORAGE = 'salve_dados_app';
 
-        function loadRecords() {
-            const data = localStorage.getItem(STORAGE_KEY);
-            return data ? JSON.parse(data) : [];
+        // Carrega os dados iniciais do LocalStorage ou inicia um array vazio
+        let bancoDados = JSON.parse(localStorage.getItem(CHAVE_STORAGE)) || [];
+
+        const form = document.getElementById('formCadastro');
+        const tabelaCorpo = document.getElementById('tabelaCorpo');
+        const btnTxt = document.getElementById('btnDownloadTxt');
+
+        // Função para mostrar a mensagem Toast de sucesso elegante
+        function mostrarMensagemSucesso() {
+            const toast = document.createElement('div');
+            
+            toast.className = "fixed bottom-5 right-5 bg-slate-800 border border-blue-500/30 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-10 opacity-0 transition-all duration-300 z-50";
+            
+            toast.innerHTML = `
+                <div class="bg-blue-500/10 p-1.5 rounded-lg text-cyan-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="font-semibold text-sm text-white">Backup Concluído!</p>
+                    <p class="text-xs text-slate-400">Arquivo salvo na sua pasta de Downloads.</p>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
         }
 
-        function saveRecords(records) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
-        }
+        // Função para renderizar as linhas da tabela
+        function renderizarTabela() {
+            tabelaCorpo.innerHTML = '';
 
-        function showStatus(message, type = 'success') {
-            statusMessage.textContent = message;
-            statusMessage.classList.remove('hidden', 'bg-red-900', 'bg-emerald-900', 'bg-sky-900');
-            const colorClass = type === 'error' ? 'bg-red-900' : type === 'info' ? 'bg-sky-900' : 'bg-emerald-900';
-            statusMessage.classList.add(colorClass, 'text-white');
-            setTimeout(() => statusMessage.classList.add('hidden'), 4000);
-        }
-
-        function renderRecords() {
-            const records = loadRecords();
-            loadingRecords.classList.add('hidden');
-            recordsList.innerHTML = records.length ? '' : '<p class="text-gray-400">Nenhum registro encontrado.</p>';
-
-            records.forEach(data => {
-                const itemHtml = `
-                    <div class="bg-gray-800 p-4 rounded-xl border border-blue-500/30 flex flex-col sm:flex-row justify-between items-start sm:items-center">
-                        <div class="flex-grow min-w-0 mb-3 sm:mb-0">
-                            <p class="text-lg font-bold text-blue-300 truncate">${data.name}</p>
-                            <p class="text-sm text-gray-400">${data.email || 'Sem e-mail'}</p>
-                            <p class="text-sm text-gray-300">CPF: ${data.cpf} | RG: ${data.rg || 'N/A'}</p>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button onclick="copyRecord('${data.id}')" class="p-2 bg-blue-600 hover:bg-blue-500 rounded-lg transition">Copiar</button>
-                            <button onclick="editRecord('${data.id}')" class="p-2 bg-teal-600 hover:bg-teal-500 rounded-lg transition">Editar</button>
-                            <button onclick="deleteRecord('${data.id}')" class="p-2 bg-red-600 hover:bg-red-500 rounded-lg transition">Excluir</button>
-                        </div>
-                    </div>
+            if (bancoDados.length === 0) {
+                tabelaCorpo.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="py-8 text-center text-slate-500 italic">
+                            Nenhum registro armazenado até o momento.
+                        </td>
+                    </tr>
                 `;
-                recordsList.insertAdjacentHTML('beforeend', itemHtml);
+                return;
+            }
+
+            bancoDados.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-700/20 transition-colors";
+                tr.innerHTML = `
+                    <td class="py-3.5 px-4 font-medium text-white">${item.nome}</td>
+                    <td class="py-3.5 px-4 text-slate-400">${item.email}</td>
+                    <td class="py-3.5 px-4">
+                        <div class="text-xs">CPF: <span class="text-slate-400">${item.cpf || '-'}</span></div>
+                        <div class="text-xs">RG: <span class="text-slate-400">${item.rg || '-'}</span></div>
+                    </td>
+                    <td class="py-3.5 px-4">
+                        <div class="text-xs">Tel: <span class="text-slate-400">${item.telefone || '-'}</span></div>
+                        <div class="text-xs">Pix: <span class="text-slate-400">${item.pix || '-'}</span></div>
+                    </td>
+                    <td class="py-3.5 px-4 text-center">
+                        <button onclick="excluirRegistro(${index})" class="text-red-400 hover:text-red-500 p-1.5 rounded bg-red-500/10 hover:bg-red-500/20 transition-colors" title="Excluir">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </td>
+                `;
+                tabelaCorpo.appendChild(tr);
             });
         }
 
+        // Evento de Submissão do Formulário
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const records = loadRecords();
-            const data = {
-                id: editRecordId || Date.now().toString(),
-                name: document.getElementById('name').value,
+
+            const novoRegistro = {
+                nome: document.getElementById('nome').value,
                 email: document.getElementById('email').value,
                 cpf: document.getElementById('cpf').value,
                 rg: document.getElementById('rg').value,
-                phone: document.getElementById('phone').value,
-                pix_key: document.getElementById('pixKey').value
+                telefone: document.getElementById('telefone').value,
+                pix: document.getElementById('pix').value
             };
 
-            if (editRecordId) {
-                const index = records.findIndex(r => r.id === editRecordId);
-                records[index] = data;
-                showStatus("Registro atualizado!");
-            } else {
-                records.push(data);
-                showStatus("Novo registro salvo!");
-            }
+            bancoDados.push(novoRegistro);
+            localStorage.setItem(CHAVE_STORAGE, JSON.stringify(bancoDados));
 
-            saveRecords(records);
-            cancelEditing();
-            renderRecords();
+            form.reset();
+            renderizarTabela();
         });
 
-        window.editRecord = function(id) {
-            const record = loadRecords().find(r => r.id === id);
-            if (record) {
-                document.getElementById('name').value = record.name;
-                document.getElementById('email').value = record.email || '';
-                document.getElementById('cpf').value = record.cpf;
-                document.getElementById('rg').value = record.rg;
-                document.getElementById('phone').value = record.phone;
-                document.getElementById('pixKey').value = record.pix_key;
-                
-                editRecordId = id;
-                buttonText.textContent = "Atualizar Registro 🔄";
-                submitButton.classList.replace('bg-indigo-700', 'bg-green-600');
-                cancelButtonContainer.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Função global para excluir registros individuais
+        window.excluirRegistro = function(index) {
+            if (confirm(`Tem certeza que deseja excluir o registro de ${bancoDados[index].nome}?`)) {
+                bancoDados.splice(index, 1);
+                localStorage.setItem(CHAVE_STORAGE, JSON.stringify(bancoDados));
+                renderizarTabela();
             }
-        };
+        }
 
-        window.cancelEditing = function() {
-            editRecordId = null;
-            form.reset();
-            buttonText.textContent = "Salvar Registro 💾";
-            submitButton.classList.replace('bg-green-600', 'bg-indigo-700');
-            cancelButtonContainer.classList.add('hidden');
-        };
-
-        window.deleteRecord = function(id) {
-            if(confirm("Deseja excluir este registro?")) {
-                const records = loadRecords().filter(r => r.id !== id);
-                saveRecords(records);
-                renderRecords();
-                showStatus("Excluído com sucesso", "error");
+        // Geração e Download do Arquivo .txt com aviso Toast (Corrigido com Template Strings)
+        btnTxt.addEventListener('click', () => {
+            if (bancoDados.length === 0) {
+                alert('Não há dados cadastrados para exportar.');
+                return;
             }
-        };
 
-        window.copyRecord = function(id) {
-            const r = loadRecords().find(r => r.id === id);
-            const text = `Nome: ${r.name}\nE-mail: ${r.email}\nCPF: ${r.cpf}\nRG: ${r.rg}\nTel: ${r.phone}\nPix: ${r.pix_key}`;
-            navigator.clipboard.writeText(text).then(() => showStatus("Copiado!", "info"));
-        };
+            const dataFormatada = new Date().toLocaleString('pt-BR');
+            let txtContent = `=========================================\n`;
+            txtContent += `             SALVE DADOS - BACKUP        \n`;
+            txtContent += ` Gerado em: ${dataFormatada} \n`;
+            txtContent += `=========================================\n\n`;
 
-        cancelEditButton.addEventListener('click', cancelEditing);
-        window.onload = renderRecords;
+            bancoDados.forEach((item, index) => {
+                txtContent += `-----------------------------------------\n`;
+                txtContent += ` REGISTRO #${index + 1}\n`;
+                txtContent += `-----------------------------------------\n`;
+                txtContent += `Nome Completo : ${item.nome}\n`;
+                txtContent += `E-mail        : ${item.email}\n`;
+                txtContent += `CPF           : ${item.cpf || 'Não informado'}\n`;
+                txtContent += `RG            : ${item.rg || 'Não informado'}\n`;
+                txtContent += `Telefone      : ${item.telefone || 'Não informado'}\n`;
+                txtContent += `Chave Pix     : ${item.pix || 'Não informado'}\n\n`;
+            });
+
+            const blob = new Blob([txtContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            
+            const dataIso = new Date().toISOString().slice(0, 10);
+            link.download = `Backup_SalveDados_${dataIso}.txt`;
+            
+            document.body.appendChild(link);
+            link.click();
+            
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            // Dispara a mensagem de feedback na tela
+            mostrarMensagemSucesso();
+        });
+
+        // Execução inicial ao abrir a página
+        renderizarTabela();
     </script>
 </body>
 </html>
